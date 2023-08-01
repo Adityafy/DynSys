@@ -1,4 +1,4 @@
-"Module for all lorenz functions"
+'''Module for all lorenz functions'''
 """
 A note of caution with matlab vs numpy indexing:
 To return a float type, there must be full indexing if an ndarray is being indexed.
@@ -23,7 +23,7 @@ def lorenz63(para,X):
 
 def lor63jacobian(para,Xt,vt):
     sig = para[0]
-    r = para[2]
-    b = para[3]
-    mat = np.array([[-sig, sig, 0], [(r-Xt[2,0]), -1, (-Xt[0,0])], [(Xt[1,0]), (Xt[0,0]), -b]]) * vt
+    r = para[1]
+    b = para[2]
+    mat = np.matmul(np.array([[-sig, sig, 0], [(r-Xt[2,0]), -1, (-Xt[0,0])], [(Xt[1,0]), (Xt[0,0]), -b]]), vt)
     return mat

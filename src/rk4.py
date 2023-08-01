@@ -18,8 +18,8 @@ def rk4dyn(para,X,dynFunc,h,total_time):
 def rk4pert(para,h,Xt,vt,jacobianFunc):
     """rk4pert returns the one time step evolution of the
     perturbation vector in tangent space"""
-    k1 = jacobianFunc(para,Xt,vt)
-    k2 = jacobianFunc(para,Xt, vt + h*k1/2)
-    k3 = jacobianFunc(para,Xt, vt + h*k2/2)
-    k4 = jacobianFunc(para,Xt, vt + h*k3)
+    k1 = jacobianFunc(para, Xt, vt)
+    k2 = jacobianFunc(para, Xt, vt + (0.5*h)*k1)
+    k3 = jacobianFunc(para, Xt, vt + (0.5*h)*k2)
+    k4 = jacobianFunc(para, Xt, vt + h*k3)
     return (vt + (1/6) * h * (k1 + 2*k2 + 2*k3 + k4))
